@@ -1,17 +1,27 @@
 /**
- * Fennie the Fox — the mascot.
+ * Pip the Panda — the mascot.
  *
- * One companion character across all games (plan §4.4.2). Subtle idle
- * breathing animation; pose swap on demand. Driven by Reanimated so the
- * UI thread owns the animation.
+ * One companion character across all games. Subtle idle breathing
+ * animation; pose swap on demand. Driven by Reanimated so the UI thread
+ * owns the animation.
  *
  * Required v1.0 poses: idle, pointing, cheering, thinking, sleeping, waving.
  *
- * The SVGs in assets/mascot are placeholders — replace with hand-drawn
- * illustration before store submission. See plan §11 Appendix D.
+ * The PNGs in assets/mascot are real illustrated art. Swap them by
+ * replacing the files at the same paths — the component will pick up
+ * the new pixels on next reload.
+ *
+ * NOTE: The plan §4.4.2 originally specified a fox named Fennie. We
+ * substituted a panda named Pip per the project owner's preference.
+ * Pandas are a natural fit for the cream + charcoal palette.
  */
 import React, { useEffect } from 'react';
-import { View, type StyleProp, type ViewStyle } from 'react-native';
+import {
+  Image,
+  type ImageSourcePropType,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 import Animated, {
   cancelAnimation,
   Easing,
@@ -21,12 +31,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import IdleSvg from '@assets/mascot/fennie-idle.svg';
-import PointingSvg from '@assets/mascot/fennie-pointing.svg';
-import CheeringSvg from '@assets/mascot/fennie-cheering.svg';
-import ThinkingSvg from '@assets/mascot/fennie-thinking.svg';
-import SleepingSvg from '@assets/mascot/fennie-sleeping.svg';
-import WavingSvg from '@assets/mascot/fennie-waving.svg';
 import { motion } from '@theme';
 
 export type MascotPose =
@@ -46,16 +50,15 @@ export interface MascotProps {
   accessibilityLabel?: string;
 }
 
-const POSE_TO_SVG: Record<
-  MascotPose,
-  React.ComponentType<{ width: number; height: number }>
-> = {
-  idle: IdleSvg,
-  pointing: PointingSvg,
-  cheering: CheeringSvg,
-  thinking: ThinkingSvg,
-  sleeping: SleepingSvg,
-  waving: WavingSvg,
+// require() must be called with a literal string; can't be dynamic.
+// Pre-resolve each pose to its asset module.
+const POSE_TO_SOURCE: Record<MascotPose, ImageSourcePropType> = {
+  idle: require('@assets/mascot/pip-idle.png'),
+  pointing: require('@assets/mascot/pip-pointing.png'),
+  cheering: require('@assets/mascot/pip-cheering.png'),
+  thinking: require('@assets/mascot/pip-thinking.png'),
+  sleeping: require('@assets/mascot/pip-sleeping.png'),
+  waving: require('@assets/mascot/pip-waving.png'),
 };
 
 export function Mascot({
@@ -73,8 +76,6 @@ export function Mascot({
       scale.value = 1;
       return undefined;
     }
-    // Breath token from theme: 2400ms sin-wave. We mimic with a timing
-    // animation that grows then shrinks (a smooth, never-jittery loop).
     const breath = motion.breath;
     if (breath.kind !== 'timing') return undefined;
     const half = breath.duration / 2;
@@ -95,17 +96,17 @@ export function Mascot({
     transform: [{ scale: scale.value }],
   }));
 
-  const Svg = POSE_TO_SVG[pose];
-
   return (
     <Animated.View
       style={[{ width: size, height: size }, animatedStyle, style]}
       accessibilityRole="image"
-      accessibilityLabel={accessibilityLabel ?? `Fennie the fox, ${pose}`}
+      accessibilityLabel={accessibilityLabel ?? `Pip the panda, ${pose}`}
     >
-      <View style={{ width: size, height: size }}>
-        <Svg width={size} height={size} />
-      </View>
+      <Image
+        source={POSE_TO_SOURCE[pose]}
+        style={{ width: size, height: size }}
+        resizeMode="contain"
+      />
     </Animated.View>
   );
 }
