@@ -104,6 +104,9 @@ export async function installNativeAudio(): Promise<void> {
     // Already installed.
     return;
   }
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { Platform } = require('react-native');
+  if (Platform.OS === 'web') return;
   try {
     // Defer import — expo-audio requires a native runtime.
     const native = await import('./audio.native');

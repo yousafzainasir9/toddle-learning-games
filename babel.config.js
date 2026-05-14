@@ -20,8 +20,9 @@ module.exports = function (api) {
           extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
         },
       ],
-      // Reanimated plugin MUST be listed last
-      'react-native-reanimated/plugin',
+      // Reanimated 4 (SDK 55+) moved its babel plugin into a separate
+      // `react-native-worklets` package. The plugin MUST still be listed last.
+      'react-native-worklets/plugin',
     ],
   };
 };

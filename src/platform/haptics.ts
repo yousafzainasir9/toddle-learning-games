@@ -52,6 +52,9 @@ export function setHapticsAdapter(next: HapticsAdapter): void {
 
 export async function installNativeHaptics(): Promise<void> {
   if (!(adapter instanceof MemoryHapticsAdapter)) return;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { Platform } = require('react-native');
+  if (Platform.OS === 'web') return;
   try {
     const Haptics = await import('expo-haptics');
     const native: HapticsAdapter = {

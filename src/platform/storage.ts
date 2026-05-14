@@ -110,9 +110,13 @@ export function setSessionAdapter(next: SessionStore): void {
  * Install real native stores. Call once during app boot.
  *
  * Falls back silently to memory adapters on platforms (web, tests) that
- * don't have SecureStore/SQLite.
+ * don't have SecureStore/SQLite. The Platform.OS guard prevents Metro's
+ * web bundler from chasing expo-sqlite's WASM imports.
  */
 export async function installNativeStorage(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { Platform } = require('react-native');
+  if (Platform.OS === 'web') return;
   try {
     const native = await import('./storage.native');
     setSettingsAdapter(await native.createSecureSettingsStore());
