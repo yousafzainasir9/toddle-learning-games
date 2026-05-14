@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Pre-commit hook.
+# Enable with: git config core.hooksPath apps/mobile/githooks
+# Runs lint-staged so only changed files get the slow checks.
+
+cd "$(dirname "$0")/.."
+
+npx --no-install lint-staged

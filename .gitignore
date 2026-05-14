@@ -1,0 +1,45 @@
+# OSX
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.*
+*.tgz
+*.log
+yarn-error.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Build outputs
+ios/
+android/
+
+# Testing
+coverage/
+junit.xml
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# Generated routes types
+.expo/types/

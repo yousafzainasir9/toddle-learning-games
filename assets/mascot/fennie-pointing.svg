@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Fennie the Fox — POINTING pose
+  Used for prompts ("find the B" while pointing at letters).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <ellipse cx="115" cy="170" rx="76" ry="56" fill="#D87C5A"/>
+  <ellipse cx="115" cy="180" rx="44" ry="32" fill="#FDF0D5"/>
+  <path d="M188 160 Q228 130 215 100 Q205 130 184 145 Z" fill="#D87C5A"/>
+  <!-- Pointing arm/paw to the right -->
+  <ellipse cx="178" cy="148" rx="22" ry="14" fill="#D87C5A" transform="rotate(-12 178 148)"/>
+  <circle cx="200" cy="142" r="10" fill="#D87C5A"/>
+  <circle cx="207" cy="138" r="4" fill="#FDF0D5"/>
+  <!-- Head, slightly turned -->
+  <circle cx="115" cy="100" r="62" fill="#D87C5A"/>
+  <path d="M77 110 Q115 142 153 110 Q153 138 115 150 Q77 138 77 110 Z" fill="#FDF0D5"/>
+  <path d="M65 60 L55 18 L91 52 Z" fill="#D87C5A"/>
+  <path d="M165 60 L175 18 L139 52 Z" fill="#D87C5A"/>
+  <path d="M71 56 L63 30 L87 52 Z" fill="#FF8A65"/>
+  <path d="M159 56 L167 30 L143 52 Z" fill="#FF8A65"/>
+  <!-- Open expressive eyes -->
+  <circle cx="101" cy="96" r="6" fill="#3D2C1E"/>
+  <circle cx="133" cy="96" r="6" fill="#3D2C1E"/>
+  <circle cx="103" cy="94" r="2" fill="#FFF8EC"/>
+  <circle cx="135" cy="94" r="2" fill="#FFF8EC"/>
+  <ellipse cx="115" cy="120" rx="9" ry="6" fill="#3D2C1E"/>
+  <!-- Small "o" mouth — speaking -->
+  <ellipse cx="115" cy="134" rx="4" ry="5" fill="#3D2C1E"/>
+  <circle cx="73" cy="118" r="8" fill="#F4A5B5" opacity="0.6"/>
+  <circle cx="157" cy="118" r="8" fill="#F4A5B5" opacity="0.6"/>
+</svg>

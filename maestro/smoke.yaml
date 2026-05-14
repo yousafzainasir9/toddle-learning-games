@@ -1,0 +1,31 @@
+# Toodles smoke test — verifies the critical path end-to-end.
+#
+# Run with: maestro test maestro/smoke.yaml
+#
+# What we verify:
+#   1. App boots to the picker
+#   2. A game tile is visible
+#   3. Tapping it loads the game
+#   4. Long-press exit opens the parent gate
+#   5. Cancelling the gate returns to the game
+#
+# This is the entire automated UI test surface. Per ARCHITECTURE.md we
+# explicitly do NOT unit-test React components — that investment lives
+# in real-toddler playtests instead.
+
+appId: org.toodles.app
+---
+- launchApp
+- assertVisible: 'Hello!'                # picker greeting
+- assertVisible: 'Hello!'                # the hello-world tile title
+- tapOn: 'Play Hello!'
+- assertVisible: 'Tap the button!'
+- tapOn: 'Tap me'
+# Celebrations are async; just confirm the prompt is still visible.
+- assertVisible: 'Tap the button!'
+# Long-press the hidden exit affordance in the top-left corner.
+- longPressOn:
+    point: '5%,5%'
+- assertVisible: 'Parents only'
+- tapOn: 'Back'
+- assertVisible: 'Tap the button!'

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Fennie the Fox — WAVING pose
+  Welcome screen. Big friendly hello.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <ellipse cx="120" cy="172" rx="78" ry="54" fill="#D87C5A"/>
+  <ellipse cx="120" cy="182" rx="46" ry="32" fill="#FDF0D5"/>
+  <path d="M195 162 Q235 132 220 102 Q210 132 190 147 Z" fill="#D87C5A"/>
+  <!-- Waving arm (raised left arm) -->
+  <ellipse cx="62" cy="110" rx="14" ry="24" fill="#D87C5A" transform="rotate(25 62 110)"/>
+  <circle cx="50" cy="78" r="12" fill="#D87C5A"/>
+  <circle cx="46" cy="74" r="3" fill="#FDF0D5"/>
+  <circle cx="54" cy="74" r="3" fill="#FDF0D5"/>
+  <!-- Head -->
+  <circle cx="120" cy="100" r="62" fill="#D87C5A"/>
+  <path d="M82 110 Q120 142 158 110 Q158 138 120 150 Q82 138 82 110 Z" fill="#FDF0D5"/>
+  <path d="M70 60 L60 18 L96 52 Z" fill="#D87C5A"/>
+  <path d="M170 60 L180 18 L144 52 Z" fill="#D87C5A"/>
+  <path d="M76 56 L68 30 L92 52 Z" fill="#FF8A65"/>
+  <path d="M164 56 L172 30 L148 52 Z" fill="#FF8A65"/>
+  <!-- Open friendly eyes -->
+  <circle cx="101" cy="96" r="6" fill="#3D2C1E"/>
+  <circle cx="133" cy="96" r="6" fill="#3D2C1E"/>
+  <circle cx="103" cy="94" r="2" fill="#FFF8EC"/>
+  <circle cx="135" cy="94" r="2" fill="#FFF8EC"/>
+  <ellipse cx="120" cy="120" rx="9" ry="6" fill="#3D2C1E"/>
+  <!-- Smile -->
+  <path d="M104 130 Q120 142 136 130" stroke="#3D2C1E" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <circle cx="78" cy="118" r="8" fill="#F4A5B5" opacity="0.6"/>
+  <circle cx="162" cy="118" r="8" fill="#F4A5B5" opacity="0.6"/>
+  <!-- Motion lines on the waving arm -->
+  <path d="M28 60 Q32 56 36 60" stroke="#FFC857" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M22 72 Q26 68 30 72" stroke="#FFC857" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>

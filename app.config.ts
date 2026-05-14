@@ -1,0 +1,68 @@
+import type { ExpoConfig } from 'expo/config';
+
+/**
+ * Toodles — Expo app configuration.
+ *
+ * Privacy & compliance notes (see docs/COMPLIANCE_CHECKLIST.md):
+ *   - No analytics, no remote config, no push, no ad SDKs.
+ *   - Network usage is intentionally NOT requested; app is fully offline.
+ *   - Age range declared 1–4 ("Designed for Families" / Kids category).
+ */
+const config: ExpoConfig = {
+  name: 'Toodles',
+  slug: 'toodles',
+  scheme: 'toodles',
+  version: '1.0.0',
+  orientation: 'landscape',
+  icon: './assets/icons/icon.png',
+  userInterfaceStyle: 'light',
+  newArchEnabled: true,
+  splash: {
+    image: './assets/icons/splash.png',
+    resizeMode: 'contain',
+    backgroundColor: '#FFF8EC',
+  },
+  assetBundlePatterns: ['**/*'],
+  ios: {
+    supportsTablet: true,
+    bundleIdentifier: 'org.toodles.app',
+    requireFullScreen: true,
+    infoPlist: {
+      ITSAppUsesNonExemptEncryption: false,
+      // No usage descriptions required: we use no camera, mic, location, etc.
+    },
+  },
+  android: {
+    package: 'org.toodles.app',
+    adaptiveIcon: {
+      foregroundImage: './assets/icons/adaptive-icon.png',
+      backgroundColor: '#FFF8EC',
+    },
+    permissions: [
+      // Intentionally empty. We collect nothing, request nothing.
+    ],
+  },
+  plugins: [
+    'expo-router',
+    'expo-font',
+    'expo-sqlite',
+    [
+      'expo-splash-screen',
+      {
+        image: './assets/icons/splash.png',
+        backgroundColor: '#FFF8EC',
+        resizeMode: 'contain',
+      },
+    ],
+  ],
+  experiments: {
+    typedRoutes: true,
+  },
+  extra: {
+    eas: {
+      projectId: '3ab4b5b1-fa03-4d4a-85e5-eb9255463bb9',
+    },
+  },
+};
+
+export default config;
